@@ -1,0 +1,20 @@
+<div>
+    <h2 *ngIf="!joggingInfo || joggingInfo.id === undefined">Add record</h2>
+    <h2 *ngIf="joggingInfo && joggingInfo.id !== undefined">Update record (ID: )</h2>
+    <form>
+        <div class="form-group">
+            <label for="date-input">Reading date:</label>
+            <input type="date" id="date-input" [(ngModel)]="readingInfo.date" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="distance-input">Page Amount</label>
+            <input type="number" id="distance-input" [(ngModel)]="readingInfo.distanceInMeters" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="time-input">Time (min)</label>
+            <input type="number" id="time-input" [(ngModel)]="readingInfo.timeInSeconds" (input)="readingInfo.timeInSeconds = $event.target.value" class="form-control" />
+        </div>
+        <button type="button" class="btn btn-primary" (click)="addOrUpdateReadingRecord($event);">Save</button>
+
+    </form>
+   </div>
